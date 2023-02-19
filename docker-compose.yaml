@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /app  
+    volumes:
+      - ./ddd:/app:cached
+      - node_modules:/app/node_modules
+    tty: true
+    ports:
+      - '5173:5173'
+    command: yarn dev --host
+volumes:
+  node_modules:
